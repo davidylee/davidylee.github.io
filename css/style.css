@@ -1,0 +1,52 @@
+.navbar {
+	margin-bottom: 0;
+}
+
+.navbar-static-top {
+	background: rgb(29, 42, 59)
+}
+
+.dropdown-menu li a {
+	padding: 10px;
+}
+
+body {
+	background: #3E4649;
+	color: #f7f7f7;
+	font-family: 'Nunito', sans-serif;
+}
+h1,
+h2 {
+	font-weight: bold;
+}
+p {
+	font-size: 16px;
+	color: #cdcdcd;
+}
+
+
+.jumbotron {
+	background: rgb(27, 27, 37);
+	color: white;
+	text-align: center;
+}
+.jumbotron p {
+	color: white;
+	font-size: 26px;
+}
+
+.btn-primary {
+	color: #fff;
+	background-color: transparent;
+	border-color: white;
+	margin-bottom: 5px;
+}
+.btn-primary:hover {
+	color: rgb(48, 73, 61);
+	background-color: white;
+	border-color: white;
+}
+
+.glyphicon-large {
+	font-size: 80px;
+}
