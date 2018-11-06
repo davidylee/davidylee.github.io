@@ -50,3 +50,12 @@ p {
 .glyphicon-large {
 	font-size: 80px;
 }
+
+.btn-github {
+	margin-bottom: 5px;
+}
+
+.btn-linkedin {
+	margin-left: 6px;
+	margin-bottom: 5px;
+}
