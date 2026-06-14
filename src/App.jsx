@@ -75,13 +75,13 @@ function Section({ id, children }) {
   );
 }
 
-function SectionLabel({ text }) {
+function SectionLabel({ text, icon }) {
   return (
     <p style={{
-      fontFamily: "'JetBrains Mono', monospace", fontSize: "12px",
-      color: "#06B6D4", letterSpacing: "0.12em", textTransform: "uppercase",
-      marginBottom: "32px"
-    }}>// {text}</p>
+      fontFamily: "'JetBrains Mono', monospace", fontSize: "14px",
+      color: "#06B6D4", letterSpacing: "0.12em",
+      marginBottom: "32px", display: "flex", alignItems: "center", justifyContent: "center", gap: "4px"
+    }}>// {text}{icon && icon}</p>
   );
 }
 
@@ -154,7 +154,7 @@ export default function App() {
       fontFamily: "'JetBrains Mono', monospace",
       cursor: "pointer", letterSpacing: "0.02em", transition: "border-color 0.2s, color 0.2s"
     },
-    h2: { fontSize: "22px", fontWeight: 600, letterSpacing: "-0.02em", marginBottom: "16px", color: "#E6EDF3" },
+    h2: { fontSize: "18px", fontWeight: 600, letterSpacing: "-0.02em", marginBottom: "16px", color: "#E6EDF3" },
     body: { color: "#8B949E", lineHeight: 1.7 },
     card: {
       background: "#161B22", border: "1px solid #21262D", borderRadius: "8px",
@@ -214,7 +214,7 @@ export default function App() {
 
           {/* About */}
           <Section id="about">
-            <SectionLabel text="about" />
+            <SectionLabel text="about" icon={<img src="/emotes/fork.png" alt="" style={{ width: "22px", height: "22px", objectFit: "contain" }} />} />
             <h2 style={styles.h2}>Background</h2>
             <p style={styles.body}>
               I'm a software engineer at CrowdStrike working on infrastructure and platform tooling. My interests span distributed systems, cloud-native architecture, and the developer experience layer — the things that make engineering teams faster.
@@ -259,7 +259,7 @@ export default function App() {
 
             {/* Twitch */}
             <div style={{ marginBottom: "40px" }}>
-              <h3 style={{ fontSize: "15px", fontWeight: 600, color: "#C9D1D9", marginBottom: "16px", fontFamily: "'JetBrains Mono', monospace" }}><span style={{ color: "#06B6D4" }}>//</span> twitch</h3>
+              <h3 style={{ fontSize: "15px", fontWeight: 600, color: "#C9D1D9", marginBottom: "16px", fontFamily: "'JetBrains Mono', monospace" }}><span style={{ color: "#06B6D4" }}>→</span> twitch <img src="/emotes/noob.png" alt="" style={{ width: "28px", height: "28px", objectFit: "contain", verticalAlign: "middle", marginLeft: "1px" }} /><img src="/badges/tier4-king-white.png" alt="" style={{ width: "22px", height: "22px", objectFit: "contain", verticalAlign: "middle", marginLeft: "6px" }} /></h3>
               <div style={{ display: "flex", gap: "32px", alignItems: "flex-start", flexWrap: "wrap" }}>
                 <div style={{ flex: 1, minWidth: "260px" }}>
                   <p style={styles.body}>
@@ -268,26 +268,27 @@ export default function App() {
                   <p style={{ ...styles.body, marginTop: "16px" }}>
                     Not actively streaming anymore, but the channel's still up if you want to watch some highlights.
                   </p>
-                  <a href="https://twitch.tv/koreanamericanchessnoob" target="_blank" rel="noreferrer" style={{ ...styles.contactLink, marginTop: "24px", display: "inline-flex", alignItems: "center", gap: "8px" }}>
-                    <svg viewBox="0 0 24 28" style={{ width: "18px", height: "18px", fill: "#67E8F9", flexShrink: 0 }} aria-hidden="true">
-                      <path d="M2.149 0L0 6.468v17.532h5.998V28h3.334l3.335-4h4.667l6-6V0H2.149zm19.185 16.667L17.667 20h-5.334l-3.335 4v-4H4V2h17.334v14.667zM13.334 6H15.5v6.5h-2.166V6zm-5.667 0h2.167v6.5H7.667V6z"/>
-                    </svg>
-                    twitch.tv/koreanamericanchessnoob
-                  </a>
-                  <a href="https://www.youtube.com/watch?v=dfOdWtkStQ4&t=0" target="_blank" rel="noreferrer" style={{ ...styles.contactLink, marginTop: "8px", display: "inline-flex", alignItems: "center", gap: "8px" }}>
-                    <svg viewBox="0 0 24 24" style={{ width: "18px", height: "18px", fill: "#67E8F9", flexShrink: 0 }} aria-hidden="true">
-                      <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
-                    </svg>
-                    Chess lesson with IM Eric Rosen
-                  </a>
+                  <div style={{ display: "flex", flexDirection: "column", gap: "8px", marginTop: "16px" }}>
+                    <a href="https://twitch.tv/koreanamericanchessnoob" target="_blank" rel="noreferrer" style={{ textDecoration: "none", background: "#161B22", border: "1px solid #21262D", borderRadius: "8px", padding: "6px 10px", display: "flex", alignItems: "center", gap: "8px", color: "#67E8F9", fontSize: "13px", fontFamily: "'JetBrains Mono', monospace" }}>
+                      <svg viewBox="0 0 24 28" style={{ width: "15px", height: "15px", fill: "#67E8F9", flexShrink: 0 }} aria-hidden="true">
+                        <path d="M2.149 0L0 6.468v17.532h5.998V28h3.334l3.335-4h4.667l6-6V0H2.149zm19.185 16.667L17.667 20h-5.334l-3.335 4v-4H4V2h17.334v14.667zM13.334 6H15.5v6.5h-2.166V6zm-5.667 0h2.167v6.5H7.667V6z"/>
+                      </svg>
+                      twitch.tv/koreanamericanchessnoob
+                    </a>
+                    <a href="https://www.youtube.com/watch?v=dfOdWtkStQ4&t=0" target="_blank" rel="noreferrer" style={{ textDecoration: "none", background: "#161B22", border: "1px solid #21262D", borderRadius: "8px", padding: "6px 10px", display: "flex", alignItems: "center", gap: "8px", color: "#67E8F9", fontSize: "13px", fontFamily: "'JetBrains Mono', monospace" }}>
+                      <svg viewBox="0 0 24 24" style={{ width: "15px", height: "15px", fill: "#67E8F9", flexShrink: 0 }} aria-hidden="true">
+                        <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+                      </svg>
+                      Chess lesson with IM Eric Rosen
+                    </a>
+                  </div>
                 </div>
-                <img src="/emotes/noob.png" alt="Noob Here emote" style={{ width: "120px", height: "120px", objectFit: "contain", flexShrink: 0 }} />
               </div>
             </div>
 
             {/* Badminton */}
             <div style={{ paddingTop: "32px", borderTop: "1px solid #21262D" }}>
-              <h3 style={{ fontSize: "15px", fontWeight: 600, color: "#C9D1D9", marginBottom: "16px", fontFamily: "'JetBrains Mono', monospace" }}><span style={{ color: "#06B6D4" }}>//</span> badminton</h3>
+              <h3 style={{ fontSize: "15px", fontWeight: 600, color: "#C9D1D9", marginBottom: "16px", fontFamily: "'JetBrains Mono', monospace" }}><span style={{ color: "#06B6D4" }}>→</span> badminton <span style={{ marginLeft: "1px" }}>🏸</span></h3>
               <p style={styles.body}>I play regularly at a local club — it's a good excuse to get off the computer and move around. Mostly doubles, always competitive.</p>
             </div>
           </Section>
@@ -303,9 +304,9 @@ export default function App() {
               href="https://mentorcruise.com/mentor/davidlee/"
               target="_blank"
               rel="noreferrer"
-              style={{ ...styles.contactLink, marginTop: "24px", display: "inline-flex", alignItems: "center", gap: "10px" }}
+              style={{ textDecoration: "none", marginTop: "16px", background: "#161B22", border: "1px solid #21262D", borderRadius: "8px", padding: "6px 10px", display: "flex", alignItems: "center", gap: "8px", color: "#67E8F9", fontSize: "13px", fontFamily: "'JetBrains Mono', monospace" }}
             >
-              <svg viewBox="0 0 30 24" style={{ width: "18px", height: "18px", flexShrink: 0 }} aria-hidden="true">
+              <svg viewBox="0 0 30 24" style={{ width: "15px", height: "15px", flexShrink: 0 }} aria-hidden="true">
                 <path d="M29.5956 15.5293H0.373168C0.0982521 15.5293 -0.0820411 15.8167 0.0376324 16.0643L1.57906 19.252C1.60241 19.3002 1.65129 19.3309 1.70489 19.3309H28.2639C28.3175 19.3309 28.3664 19.3002 28.3898 19.252L29.9312 16.0643C30.0509 15.8168 29.8706 15.5293 29.5956 15.5293Z" fill="#67E8F9"/>
                 <path d="M2.18902 20.5146C3.21986 22.6464 5.37919 24.0008 7.74714 24.0008H22.2203C24.5882 24.0008 26.7475 22.6464 27.7784 20.5146L27.8662 20.3329C27.8961 20.2711 27.8511 20.1992 27.7824 20.1992H2.18507C2.11635 20.1992 2.07129 20.2711 2.10121 20.3329L2.18902 20.5146Z" fill="#67E8F9"/>
                 <path d="M14.1973 0.117229L6.36499 14.0093C6.22493 14.2577 6.40444 14.565 6.68963 14.565H14.335C14.4894 14.565 14.6145 14.4399 14.6145 14.2855V0.227441C14.6145 -0.00172937 14.3105 -0.0820223 14.1973 0.117229Z" fill="#67E8F9"/>
@@ -322,28 +323,29 @@ export default function App() {
             <p style={{ ...styles.body, marginBottom: "32px" }}>
               I'm not actively looking, but I'm always happy to talk infrastructure, distributed systems, or interesting engineering problems.
             </p>
-            <div style={{ ...styles.contactLink, display: "flex", alignItems: "center", gap: "10px" }}>
-              <svg viewBox="0 0 24 24" style={{ width: "18px", height: "18px", fill: "#67E8F9", flexShrink: 0 }} aria-hidden="true">
-                <path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
-              </svg>
-              davidyoungminlee@gmail.com
+            <div style={{ display: "flex", flexDirection: "column", gap: "8px" }}>
+              <div style={{ background: "#161B22", border: "1px solid #21262D", borderRadius: "8px", padding: "6px 10px", display: "flex", alignItems: "center", gap: "8px", color: "#67E8F9", fontSize: "13px", fontFamily: "'JetBrains Mono', monospace" }}>
+                <svg viewBox="0 0 24 24" style={{ width: "15px", height: "15px", fill: "#67E8F9", flexShrink: 0 }} aria-hidden="true">
+                  <path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
+                </svg>
+                davidyoungminlee@gmail.com
+              </div>
+              <a href="https://linkedin.com/in/davidylee" target="_blank" rel="noreferrer" style={{ textDecoration: "none", background: "#161B22", border: "1px solid #21262D", borderRadius: "8px", padding: "6px 10px", display: "flex", alignItems: "center", gap: "8px", color: "#67E8F9", fontSize: "13px", fontFamily: "'JetBrains Mono', monospace" }}>
+                <svg viewBox="0 0 24 24" style={{ width: "15px", height: "15px", fill: "#67E8F9", flexShrink: 0 }} aria-hidden="true">
+                  <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                </svg>
+                linkedin.com/in/davidylee
+              </a>
+              <a href="https://mentorcruise.com/mentor/davidlee/" target="_blank" rel="noreferrer" style={{ textDecoration: "none", background: "#161B22", border: "1px solid #21262D", borderRadius: "8px", padding: "6px 10px", display: "flex", alignItems: "center", gap: "8px", color: "#67E8F9", fontSize: "13px", fontFamily: "'JetBrains Mono', monospace" }}>
+                <svg viewBox="0 0 30 24" style={{ width: "15px", height: "15px", flexShrink: 0 }} aria-hidden="true">
+                  <path d="M29.5956 15.5293H0.373168C0.0982521 15.5293 -0.0820411 15.8167 0.0376324 16.0643L1.57906 19.252C1.60241 19.3002 1.65129 19.3309 1.70489 19.3309H28.2639C28.3175 19.3309 28.3664 19.3002 28.3898 19.252L29.9312 16.0643C30.0509 15.8168 29.8706 15.5293 29.5956 15.5293Z" fill="#67E8F9"/>
+                  <path d="M2.18902 20.5146C3.21986 22.6464 5.37919 24.0008 7.74714 24.0008H22.2203C24.5882 24.0008 26.7475 22.6464 27.7784 20.5146L27.8662 20.3329C27.8961 20.2711 27.8511 20.1992 27.7824 20.1992H2.18507C2.11635 20.1992 2.07129 20.2711 2.10121 20.3329L2.18902 20.5146Z" fill="#67E8F9"/>
+                  <path d="M14.1973 0.117229L6.36499 14.0093C6.22493 14.2577 6.40444 14.565 6.68963 14.565H14.335C14.4894 14.565 14.6145 14.4399 14.6145 14.2855V0.227441C14.6145 -0.00172937 14.3105 -0.0820223 14.1973 0.117229Z" fill="#67E8F9"/>
+                  <path d="M23.6734 14.01L15.8411 0.11789L15.838 0.112479C15.7256 -0.0853096 15.4238 -0.00556126 15.4238 0.221873V14.2862C15.4238 14.4406 15.549 14.5657 15.7033 14.5657H23.3487C23.6339 14.5657 23.8135 14.2584 23.6734 14.01Z" fill="#67E8F9"/>
+                </svg>
+                mentorcruise.com/mentor/davidlee
+              </a>
             </div>
-
-            <a href="https://linkedin.com/in/davidylee" target="_blank" rel="noreferrer" style={{ ...styles.contactLink, display: "flex", alignItems: "center", gap: "10px" }}>
-              <svg viewBox="0 0 24 24" style={{ width: "18px", height: "18px", fill: "#67E8F9", flexShrink: 0 }} aria-hidden="true">
-                <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
-              </svg>
-              linkedin.com/in/davidylee
-            </a>
-            <a href="https://mentorcruise.com/mentor/davidlee/" target="_blank" rel="noreferrer" style={{ ...styles.contactLink, display: "flex", alignItems: "center", gap: "10px" }}>
-              <svg viewBox="0 0 30 24" style={{ width: "18px", height: "18px", flexShrink: 0 }} aria-hidden="true">
-                <path d="M29.5956 15.5293H0.373168C0.0982521 15.5293 -0.0820411 15.8167 0.0376324 16.0643L1.57906 19.252C1.60241 19.3002 1.65129 19.3309 1.70489 19.3309H28.2639C28.3175 19.3309 28.3664 19.3002 28.3898 19.252L29.9312 16.0643C30.0509 15.8168 29.8706 15.5293 29.5956 15.5293Z" fill="#67E8F9"/>
-                <path d="M2.18902 20.5146C3.21986 22.6464 5.37919 24.0008 7.74714 24.0008H22.2203C24.5882 24.0008 26.7475 22.6464 27.7784 20.5146L27.8662 20.3329C27.8961 20.2711 27.8511 20.1992 27.7824 20.1992H2.18507C2.11635 20.1992 2.07129 20.2711 2.10121 20.3329L2.18902 20.5146Z" fill="#67E8F9"/>
-                <path d="M14.1973 0.117229L6.36499 14.0093C6.22493 14.2577 6.40444 14.565 6.68963 14.565H14.335C14.4894 14.565 14.6145 14.4399 14.6145 14.2855V0.227441C14.6145 -0.00172937 14.3105 -0.0820223 14.1973 0.117229Z" fill="#67E8F9"/>
-                <path d="M23.6734 14.01L15.8411 0.11789L15.838 0.112479C15.7256 -0.0853096 15.4238 -0.00556126 15.4238 0.221873V14.2862C15.4238 14.4406 15.549 14.5657 15.7033 14.5657H23.3487C23.6339 14.5657 23.8135 14.2584 23.6734 14.01Z" fill="#67E8F9"/>
-              </svg>
-              mentorcruise.com/mentor/davidlee
-            </a>
           </Section>
         </div>
 
