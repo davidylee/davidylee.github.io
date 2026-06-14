@@ -217,7 +217,7 @@ export default function App() {
             <SectionLabel text="about" icon={<img src="/emotes/fork.png" alt="" style={{ width: "22px", height: "22px", objectFit: "contain" }} />} />
             <h2 style={styles.h2}>Background</h2>
             <p style={styles.body}>
-              I'm a software engineer at CrowdStrike working on infrastructure and platform tooling. My interests span distributed systems, cloud-native architecture, and the developer experience layer — the things that make engineering teams faster.
+              I'm a software engineer at CrowdStrike working on infrastructure and platform tooling. My interests span distributed systems, cloud, and bare-metal infrastructure.
             </p>
             <p style={{ ...styles.body, marginTop: "16px" }}>
               Outside of work I'm learning Go with an eye toward Rust, and deepening my knowledge of system design. After spending some years in the Bay Area where I originally grew up, I'm relocating to the Seattle area. Other interests include badminton and poker theory.
